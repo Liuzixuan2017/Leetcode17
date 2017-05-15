@@ -132,7 +132,19 @@ int findUnsortedSubarray(int* nums, int numsSize) {
 	return end - start + 1;
 
 }
-// int main(int argc, char const *argv[])
+// 解题思路：
+// 排序（Sort）
+
+// 对数组nums排序，记排序后的数组为snums，数组长度为n
+
+// 令s = e = -1
+
+// 从0到n-1枚举i，记满足nums[i] != snums[i]的最小i值为s，最大i值为e
+
+// 则当s != e时，所求最短连续子数组为nums[s .. e] 
+
+// 否则，所求子数组为空
+// // int main(int argc, char const *argv[])
 // {
 // 	int arr[] = {9,1,2,7,2};
 // 	int count  =  findUnsortedSubarray(arr, 5);
