@@ -38,6 +38,81 @@ Note:
 
 The height and width of the given matrix is in range [1, 100].
 The given r and c are all positive.*/
+// int** matrixReshape(int** nums, int numsRowSize, int numsColSize, int r, int c, int** columnSizes, int* returnSize) {
+//     if (nums == 0 || numsRowSize * numsColSize != r*c)
+//     {
+//     	*returnSize = numsRowSize;
+//     	**columnSizes = numsColSize;
+//     	return 0;
+//     } else {
+//     	for (int i = 0; i < numsRowSize; ++i)
+//     	{
+//     		for (int j = 0; j < numsColSize; ++j)
+//     		{
+//     			printf("0x%x ",&nums[i][j]);
+//     		}
+//     		printf("\n");
+//     	}
+
+//     	printf("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n");
+//     	 	for (int i = 0; i < r; ++i)
+//     	{
+//     		for (int j = 0; j < c; ++j)
+//     		{
+//     			printf("0x%x ",&nums[i][j]);
+//     		}
+//     		printf("\n");
+//     	}
+//     	*returnSize = r;
+//     	*columnSizes = (int *)malloc(r*sizeof(int));
+//     	for (int i = 0; i < r; ++i)
+//     	{
+//     		*columnSizes[i] = c;
+//     	}
+//     	return nums;
+//     }
+// }
 int** matrixReshape(int** nums, int numsRowSize, int numsColSize, int r, int c, int** columnSizes, int* returnSize) {
-    
+	if (nums == 0 || numsColSize*numsRowSize != r*c)
+	{
+		*columnSizes = (int *)malloc(r*sizeof(int));
+    	for (int i = 0; i < r; ++i)
+    	{
+    		*columnSizes[i] = numsColSize;
+    	}
+		*returnSize = numsRowSize;
+		return nums;
+	}
+	//initialize two dimesional array 
+	int **arr = (int**)malloc(r*sizeof(int*));
+
+	for (int i = 0; i < r; ++i)
+	{
+		// *arr = (int*)malloc(c*sizeof(int));
+		arr[i] = (int*)malloc(c*sizeof(int));
+	}
+
+	//reshape the matrix
+	int count = 0;
+	for (int i = 0; i < numsRowSize; ++i)
+	{
+		for (int j = 0; j < numsColSize; ++j)
+		{
+			arr[count / c][count % c] = nums[i][j];
+			count++; 
+		}
+	}
+	//allocate space for colunsize and returnS
+	*columnSizes = (int *)malloc(r*sizeof(int));
+    	for (int i = 0; i < r; ++i)
+    	{
+    		*columnSizes[i] = c;
+    	}
+		*returnSize = r;
+		// printf("hahahahhahahahah\n");
+		return arr;
 }
+ // ✔ runtime: 0 ms
+ //    ✘ answer: [[1,2,0,0]]
+ //    ✘ output: 0x1a94290 0x1a94294 ,0x1a942b0 0x1a942b4 
+ //    		  0x1a94290 0x1a94294 0x1a94298 0x1a9429c 

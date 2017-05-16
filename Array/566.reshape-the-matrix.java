@@ -20,3 +20,12 @@ public class Solution {
         return resize;
     }
 }
+
+
+// https://leetcode.com/articles/reshape-the-matrix/
+/*
+three approaches:
+	Approach #1 Using queue [Accepted];
+	Approach #2 Without using extra Space [Accepted]
+	Approach #3 Using division and modulus [Accepted]
+*/
