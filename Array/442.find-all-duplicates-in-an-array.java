@@ -65,7 +65,7 @@ public class Solution {
     			nums[index - 1] = (-1)*nums[index - 1];
     		} else {
     			arr.add(index);//because you acess this elemen on this index twice, so you should
-    			//push this index into the array list, which is the nums[i] 
+    			//push this index into the array list, which is the nums[i], the number in this array
     		}
     	}
     	return arr;
