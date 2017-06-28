@@ -3,27 +3,48 @@
 // The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
 public class Solution {
     public boolean isValid(String s) {
-        char[] arr = s.toCharArray();
+        // char[] arr = s.toCharArray();
+        // Stack<Character> st = new Stack<Character>();
+        // for (int i = 0; i < arr.length; i++) {
+        // 	if (arr[i] == '(' || arr[i] == '{' || arr[i] == '[') {
+        // 		st.push(arr[i]);
+        // 	} else {
+        // 		if (st.empty() == false) {
+        // 			char p = st.pop();
+        // 			if ((arr[i] == '}' && p != '{') ||(arr[i] == ']' && p != '[')
+        // 				||(arr[i] == ')' && p != '(')){
+        // 				return false;
+        // 			}
+        // 		} else {
+        // 			return false;
+        // 		}
+        // 	}
+        // }
+        // if (st.empty() == false) {
+        // 	return false;
+        // } else {
+        // 	return true;
+        // }
+        char [] arr = s.toCharArray();
         Stack<Character> st = new Stack<Character>();
         for (int i = 0; i < arr.length; i++) {
-        	if (arr[i] == '(' || arr[i] == '{' || arr[i] == '[') {
-        		st.push(arr[i]);
-        	} else {
-        		if (st.empty() == false) {
-        			char p = st.pop();
-        			if ((arr[i] == '}' && p != '{') ||(arr[i] == ']' && p != '[')
-        				||(arr[i] == ')' && p != '(')){
-        				return false;
-        			}
-        		} else {
-        			return false;
-        		}
-        	}
+            if (arr[i] == '(' || arr[i] == '{' || arr[i] =='[') {
+                st.push(arr[i]);
+            } else {
+                if (st.isEmpty() == true) {
+                    return false;
+                }
+                char p = st.pop();
+                char t = arr[i];
+                if (!(p == '(' && t == ')' || p == '{' && t == '}' || p == '[' && t == ']')) {
+                    return false;
+                }
+            }
         }
-        if (st.empty() == false) {
-        	return false;
+        if (st.isEmpty() == true) {
+            return true;
         } else {
-        	return true;
+            return false;
         }
     }
 }
