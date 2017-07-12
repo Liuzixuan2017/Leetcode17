@@ -21,11 +21,6 @@ public class Solution {
             }
         }
         int leftlength = idx;
-
-        // int idx = Arrays.binarySearch(inorder, preorder[0]);
-        // int leftlength = idx;
-        // int rightlength = inorder.length - 1 - idx;
-
         int left1 [] = new int[0];
         if (preorder.length > 1) {
         	left1 = Arrays.copyOfRange(preorder, 1, 1 + leftlength);
