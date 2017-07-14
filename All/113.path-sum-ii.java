@@ -28,6 +28,4 @@ public class Solution {
     	helper(root.left, currentSum + root.val, arr);
     	helper(root.right, currentSum + root.val, copy);
     }
-
-
 }
